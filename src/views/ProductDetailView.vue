@@ -46,6 +46,7 @@ import { computed, ref } from '@vue/runtime-core';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import shared from '../helpers/shared';
+import { createToast } from 'mosha-vue-toastify';
 export default {
     name: 'ProductDetailView',
     components: {},
@@ -72,6 +73,12 @@ export default {
 
         const addToCart = (prod, quantity) => {
             store.dispatch('addToCart', { prod: prod, quantity: quantity });
+            createToast('Add product successfully', {
+                type: 'success',
+                showIcon: true,
+                timeout: 2000,
+                swipeClose: true,
+            });
         };
 
         const formatNumber = shared.formatNumber;

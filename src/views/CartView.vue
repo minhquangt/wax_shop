@@ -51,7 +51,9 @@ export default {
             total: computed(() => {
                 let total = 0;
                 for (let i = 0; i < store.state.cart.length; i++) {
-                    total += store.state.cart[i].price;
+                    total +=
+                        store.state.cart[i].price *
+                        store.state.cart[i].quantity;
                 }
                 return total;
             }),
